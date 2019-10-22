@@ -4,11 +4,15 @@ import org.junit.Test;
 import sun.security.action.GetPropertyAction;
 
 import java.security.AccessController;
+import java.time.Instant;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.zone.ZoneRules;
 import java.util.TimeZone;
 
 /**
- * ZoneId用于初始化instant
+ * 时区
+ * 可用于设置Instant、ZoneDateTime或时间类型转换等的时区信息
  */
 public class ZoneIdDemo {
 
@@ -30,15 +34,20 @@ public class ZoneIdDemo {
         String toTimeZoneId = TimeZone.getDefault().getID();
         ZoneId toTimeZoneZoneId = TimeZone.getDefault().toZoneId();
 
+        // 获取时区规则和偏移量
+        ZoneId zoneId = ZoneId.systemDefault();
+        ZoneRules rules = zoneId.getRules();
+        ZoneOffset offset = rules.getOffset(Instant.now());
+
         System.out.printf("toTimeZoneId = %s, toTimeZoneZoneId = %s %n",
                 toTimeZoneId, toTimeZoneZoneId);
     }
+
 
 
     private  void getID2JavaHome() {
         String javaHome = AccessController.doPrivileged(new GetPropertyAction("java.home"));
         getSystemTimeZoneID(javaHome);
     }
-
     private static native String getSystemTimeZoneID(String javaHome);
 }

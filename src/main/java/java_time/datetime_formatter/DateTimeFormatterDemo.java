@@ -3,10 +3,7 @@ package java_time.datetime_formatter;
 import org.junit.Test;
 
 import javax.xml.ws.RequestWrapper;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Locale;
@@ -19,6 +16,7 @@ public class DateTimeFormatterDemo {
      * date --> String
      *
      * <p>FormatStyle.FULL 包含时区的信息，LocalDateTime无法使用，ZonedDateTime可以使用<p/>
+     * LocalDateTime 转 ZonedDateTime {@link LocalDateTime#atZone(ZoneId)}
      */
     @Test
     public void date2StringByFormatStyle() {
@@ -30,7 +28,6 @@ public class DateTimeFormatterDemo {
 
         LocalDateTime localDateTime = LocalDateTime.now();
         System.out.println(localDateTime);
-
 
         String longDate = localDateTime.format(longFormat);
         String mediumDate = localDateTime.format(mediumFormat);
@@ -75,7 +72,7 @@ public class DateTimeFormatterDemo {
         // ZoneDateTime
         DateTimeFormatter dateZoneFormat =
                 DateTimeFormatter.ofPattern("yyyy MM dd H").withZone(ZoneId.systemDefault());
-        ZonedDateTime zonedDateTime = ZonedDateTime.parse(date, formatter);
+        ZonedDateTime zonedDateTime = ZonedDateTime.parse(date, dateZoneFormat);
         System.out.println(zonedDateTime);
     }
 }

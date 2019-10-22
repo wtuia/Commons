@@ -17,7 +17,10 @@ import java.util.Calendar;
  *
  * 如果做add操作,则DAY_OF_MONTH DAY_OF_WEEK DATE 是一样的
  *
+ * 自1.8起，被替代
+ *
  */
+@Deprecated
 public class CalenderClass {
 
     private static final Logger logger = LoggerFactory.getLogger(CalenderClass.class);
@@ -26,6 +29,8 @@ public class CalenderClass {
     public static void main(String[] args) {
 
         Calendar cal = Calendar.getInstance();
+
+        System.out.println(SDF.format(cal.getTimeInMillis()));
 
         //设置时间
         cal.set(Calendar.YEAR, 2018); // 设置年
