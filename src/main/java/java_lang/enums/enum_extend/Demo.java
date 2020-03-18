@@ -11,7 +11,7 @@ public class Demo {
     @Test
     public void demo() {
         double[] doubles = {1, 2};
-        operation(Arrays.(ExtendedOperation.values()), doubles[0], doubles[1]);
+        operation(Arrays.asList(ExtendedOperation.values()), doubles[0], doubles[1]);
         System.out.println("----------");
         operation(BasicOperation.class, doubles[0], doubles[1]);
     }

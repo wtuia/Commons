@@ -9,6 +9,7 @@ public class CloneTest {
         UserName fullName = new UserName().setFullName("full");
         UserClone user = new UserClone().setFirstName("first")
                 .setLastName("last").setUserName(fullName);
+        user.setId(11);
         UserClone userClone = null;
 
         try {
@@ -16,6 +17,7 @@ public class CloneTest {
             userClone.setFirstName("clone first");
             userClone.setLastName("clone last");
             userClone.setUserName(userClone.getUserName().setFullName("clone full"));
+            userClone.setId(12);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }

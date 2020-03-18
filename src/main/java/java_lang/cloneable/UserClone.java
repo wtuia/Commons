@@ -2,9 +2,18 @@ package java_lang.cloneable;
 
 public class UserClone implements Cloneable{
 
+    int id;
     private String firstName;
     private String lastName;
     private UserName userName;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public UserName getUserName() {
         return userName;
@@ -44,9 +53,10 @@ public class UserClone implements Cloneable{
     @Override
     public String toString() {
         return "UserClone{" +
-                "firstName='" + firstName + '\'' +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", fullName='" + userName + '\'' +
+                ", userName=" + userName +
                 '}';
     }
 }

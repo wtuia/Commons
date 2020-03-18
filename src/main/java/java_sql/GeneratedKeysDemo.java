@@ -1,11 +1,12 @@
 package java_sql;
 
 
-import java.io.FileInputStream;
-import java.sql.*;
-import java.util.Properties;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
-public class sqlDemo {
+public class GeneratedKeysDemo {
 
     public static void main(String[] args) {
         updateId();
@@ -16,7 +17,7 @@ public class sqlDemo {
      */
     private static void updateId() {
         String sql = "insert into user(user) values (?)";
-        try (Connection connection = getConnection();
+        try (Connection connection = ConnManager.getConnection();
              PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ){
             ps.setString(1, "1");
@@ -38,17 +39,5 @@ public class sqlDemo {
      *String driverClass =properties.getProperty("driverClass");
      * Class.forName(driverClass)
      */
-    private static Connection getConnection() {
-        Connection connection = null;
-        try (FileInputStream fis = new FileInputStream("src/main/resources/jdbc.properties")
-            ){
-            Properties properties = new Properties();
-            properties.load(fis);
-             connection = DriverManager.getConnection(properties.getProperty("url"), properties);
-            /*Connection connection = DriverManager.getConnection(properties.getProperty("url"), properties.getProperty("user"), properties.getProperty("password"));*/
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return connection;
-    }
+
 }
