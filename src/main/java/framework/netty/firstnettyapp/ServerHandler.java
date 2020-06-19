@@ -6,6 +6,7 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.CharsetUtil;
+import io.netty.util.ReferenceCountUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +24,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		ByteBuf in = (ByteBuf) msg;
 		logger.info("Server received: " + in.toString(CharsetUtil.UTF_8));
+		ReferenceCountUtil.release(msg);
 	}
 
 	/**
@@ -46,5 +48,15 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
 		logger.error("", cause.getCause());
 		ctx.close();
+	}
+
+	@Override
+	public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+		logger.warn("server handler 被添加到pipeline中");
+	}
+
+	@Override
+	public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+		logger.warn("server handler 从pipeline中移除");
 	}
 }

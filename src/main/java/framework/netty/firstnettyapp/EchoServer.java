@@ -41,7 +41,7 @@ public class EchoServer {
 					.childHandler(new ChannelInitializer<SocketChannel>() {
 						@Override
 						protected void initChannel(SocketChannel socketChannel) throws Exception {
-							socketChannel.pipeline().addLast(handler);
+							socketChannel.pipeline().addLast(handler).addLast(new ServierOutHandler());
 						}
 					});
 			ChannelFuture f = b.bind().sync();

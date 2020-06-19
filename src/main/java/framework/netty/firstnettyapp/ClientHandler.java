@@ -45,4 +45,13 @@ public class ClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
 		ctx.close();
 	}
 
+	@Override
+	public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+		logger.warn("client handler 被添加到 pipeline中");
+	}
+
+	@Override
+	public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+		logger.warn("client handler 从 pipeline中移除");
+	}
 }
