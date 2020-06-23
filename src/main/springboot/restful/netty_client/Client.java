@@ -1,4 +1,4 @@
-package restful.client;
+package restful.netty_client;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
