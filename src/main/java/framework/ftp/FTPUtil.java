@@ -105,7 +105,7 @@ public class FTPUtil {
 				}
 			}
 			ftpClient.setControlEncoding(ftpAndFile.getEncoding());
-			ftpClient.enterLocalPassiveMode();
+			//ftpClient.enterLocalPassiveMode();
 			ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
 			in = new FileInputStream(ftpAndFile.getLocalPathAndName());
 			if (!ftpClient.storeFile(
