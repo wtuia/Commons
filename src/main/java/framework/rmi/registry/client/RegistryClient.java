@@ -1,11 +1,14 @@
 package framework.rmi.registry.client;
 
+import com.google.common.base.Joiner;
+import com.google.common.base.Splitter;
 import framework.rmi.registry.service.HelloRegistryFacade;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.List;
 
 public class RegistryClient {
     public static void main(String[] args) {

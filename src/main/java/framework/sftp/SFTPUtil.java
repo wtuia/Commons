@@ -174,11 +174,11 @@ public class SFTPUtil {
 
 	//上传文件测试
 	public static void main(String[] args) throws SftpException, IOException {
-		SFTPUtil sftp = new SFTPUtil("mysftp", "357322", "139.155.83.148", 22);
+		SFTPUtil sftp = new SFTPUtil("yj", "357322", "124.70.68.205", 22);
 		sftp.login();
-		File file = new File("C:\\Users\\14244\\Desktop\\LNSY-PC-CMNET-SW06-SBS9312E");
+		File file = new File("C:\\Users\\14244\\Desktop\\test.png.bak");
 		InputStream is = new FileInputStream(file);
-		sftp.upload("","upload", "test_sftp", is);
+		sftp.upload("","", "test_sftp", is);
 		try {
 			is.close();
 		}catch (Exception e) {

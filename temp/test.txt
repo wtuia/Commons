@@ -1,0 +1,2 @@
+this is utf-8 file
+这是UFT-8文件

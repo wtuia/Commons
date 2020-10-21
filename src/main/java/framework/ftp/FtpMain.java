@@ -9,7 +9,7 @@ public class FtpMain {
 	public static void main(String[] args) {
 		Configurator.initialize("log4j2.xml",System.getProperty("user.dir") + File.separator + "log4j2.xml");
 		FTPAndFileProperty ftpAndFileProperty =
-				new FTPAndFileProperty("","", "", "21",
+				new FTPAndFileProperty("124.70.68.205","yj", "357322", "21",
 						"test", "temp");
 		ftpAndFileProperty.setEncoding("GB2312");
 		ftpAndFileProperty.setFileName("test.txt");

@@ -22,8 +22,10 @@ class Server {
                 sb.append(new String(bytes));
             }
             System.out.println("mess:" + sb.toString());
-            outputStream.write("re message".getBytes());
-            outputStream.flush();
+			for (int i = 0; i < 4; i++) {
+				outputStream.write("123456789".getBytes());
+				outputStream.flush();
+			}
             // 关闭输出流，不然对端会一直等待
             socket.shutdownOutput();
         }catch (Exception e) {
