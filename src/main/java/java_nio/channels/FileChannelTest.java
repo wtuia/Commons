@@ -1,4 +1,4 @@
-package java_nio;
+package java_nio.channels;
 
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.StandardCharsets;
 
-public class ChannelTest {
+public class FileChannelTest {
 
 	/**
 	 * Channel 只能与Buffer交互
@@ -35,8 +35,7 @@ public class ChannelTest {
 	}
 
 	/**
-	 * 文件读取 与传统的inputStream byte[] 读取方式一致
-	 * 避免使用map读取大文件时占用过多内存
+	 * 文件读取模型 与传统的inputStream byte[] 读取方式一致 都是按批次读取
 	 */
 	@Test
 	public void channelReadTest(){

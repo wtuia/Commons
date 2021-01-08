@@ -1,11 +1,13 @@
-package java_nio;
+package java_nio.file;
 
 import org.junit.Test;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,7 @@ public class PathAndFiles {
 		Path path = Paths.get("temp", "test.txt");
 		System.out.println(Files.readAllLines(path, StandardCharsets.UTF_8));
 		System.out.println(new String(Files.readAllBytes(path), StandardCharsets.UTF_8));
+		Files.write(path, "测试".getBytes());
 	}
 
 	@Test
