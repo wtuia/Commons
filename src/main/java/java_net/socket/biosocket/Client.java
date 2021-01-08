@@ -1,4 +1,4 @@
-package java_net.socket;
+package java_net.socket.biosocket;
 
 import java.io.InputStream;
 import java.io.OutputStream;
