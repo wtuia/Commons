@@ -31,17 +31,57 @@
             </Policies>
             <DefaultRolloverStrategy max="100" />
         </RollingRandomAccessFile>
-        <Async name="ASYNC" includeLocation="true">
+
+	    <RollingRandomAccessFile name="controllerFile"
+	                             fileName="${LOG_HOME}/task/controller.log" filePattern="${LOG_HOME}/controller-%d{yyyy-MM-dd}-%i.log"
+	                             immediateFlush="false" append="false">
+		    <Filters>
+			    <ThresholdFilter level="fatal" onMatch="DENY" onMismatch="NEUTRAL" />
+			    <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY" />
+		    </Filters>
+		    <PatternLayout
+				    pattern="[%p %d{y-MM-dd HH:mm:ss}] %m %ex [%t] %location%n" />
+		    <Policies>
+			    <TimeBasedTriggeringPolicy interval="1" />
+			    <SizeBasedTriggeringPolicy size="50 MB" />
+		    </Policies>
+		    <DefaultRolloverStrategy max="10" />
+	    </RollingRandomAccessFile>
+
+	    <RollingRandomAccessFile name="workFile"
+	                             fileName="${LOG_HOME}/task/work.log" filePattern="${LOG_HOME}/work-%d{yyyy-MM-dd}-%i.log"
+	                             immediateFlush="false" append="false">
+		    <Filters>
+			    <ThresholdFilter level="fatal" onMatch="DENY" onMismatch="NEUTRAL" />
+			    <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY" />
+		    </Filters>
+		    <PatternLayout
+				    pattern="[%p %d{y-MM-dd HH:mm:ss}] %m %ex [%t] %location%n" />
+		    <Policies>
+			    <TimeBasedTriggeringPolicy interval="1" />
+			    <SizeBasedTriggeringPolicy size="50 MB" />
+		    </Policies>
+		    <DefaultRolloverStrategy max="10" />
+	    </RollingRandomAccessFile>
+
+
+	    <Async name="ASYNC" includeLocation="true">
             <AppenderRef ref="FILE" />
             <AppenderRef ref="CONSOLE" />
         </Async>
     </appenders>
     <loggers>
-        <!-- <AsyncLogger name="com.zone.ics.business.ipam" level="info"
+
+
+	    <!--<AsyncLogger name="file2" level="info"
              additivity="false" includeLocation="true">
-            <AppenderRef ref="FILE" />
-        </AsyncLogger> -->
-        <Root level="info">
+            <AppenderRef ref="controllerFile" />
+        </AsyncLogger>
+	    <AsyncLogger name="file3" level="info"
+	                 additivity="false" includeLocation="true">
+		    <AppenderRef ref="workFile" />
+	    </AsyncLogger>-->
+        <Root level="error">
             <AppenderRef ref="ASYNC" />
         </Root>
     </loggers>

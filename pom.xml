@@ -114,7 +114,15 @@
             <version>2.3.0</version>
         </dependency>
 
-        <!--spring boot-->
+	    <!-- https://mvnrepository.com/artifact/org.apache.mina/mina-core -->
+	    <dependency>
+		    <groupId>com.lmax</groupId>
+		    <artifactId>disruptor</artifactId>
+		    <version>3.4.2</version>
+	    </dependency>
+
+
+	    <!--spring boot-->
         <!-- 包含SpringMVC和Tomcat 提供WEB支持 实现restfulAPI -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
