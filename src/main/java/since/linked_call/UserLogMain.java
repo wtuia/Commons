@@ -2,7 +2,7 @@ package since.linked_call;
 
 import org.junit.Test;
 
-public class UserMain {
+public class UserLogMain {
 
     /**
      * 同为Sting 参数， 客户端调用具有不确定性
